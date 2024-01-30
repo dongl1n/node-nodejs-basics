@@ -4,9 +4,9 @@ import {createServer as createServerHttp} from 'node:http';
 import('./files/c.js');
 import a from './files/a.json' with { type: "json" };
 import b from './files/a.json' with { type: "json" };
-
-
 const random = Math.random();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let unknownObject;
 
@@ -20,8 +20,8 @@ console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
 
-console.log(`Path to current file is ${path.basename}`);
-console.log(`Path to current directory is ${path.dirname}`);
+console.log(`Path to current file is ${__filename}`);
+console.log(`Path to current directory is ${__dirname}`);
 
 const myServer = createServerHttp((_, res) => {
     res.end('Request accepted');
